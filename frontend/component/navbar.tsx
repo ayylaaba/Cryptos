@@ -5,39 +5,30 @@ import Link from 'next/link';
 
 const Navbar = () => {
   return (
-    <div>
-      {/* logo  */}
-      <nav className='fixed  w-full bg-black/90 backdrop-blur-md'>
-          <div className='flex justify-between relative m-2'>
-              <Link href='/' className='flex justify-between items-center pr-2 h-8 w-35'>
-                <div className='bottom-7 left-1 flex justify-center items-center text-white rounded
-                  bg-gradient-to-br from-primary to-accent w-10 h-10'>
-                  <Bitcoin />
-                </div>
-                <span className='font-bold text-1xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent'>
-                  CryptoVault
-                </span>
-              </Link>
-              
-              {/* authentacition */}
-              <div>
-                  <Link href="#features">
-                      Features
-                  </Link>
-                <Button className='bg-gradient-to-r from-primary to-accent mr-2 mt-1 ml-2'>
-                  <Link href="#register">
-                    Lanch App
-                  </Link>
-                </Button>
-              </div>
+    <nav className="fixed top-0 w-full border-b border-border/30 z-50 backdrop-blur-md bg-background/70">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <Link href='/' className="flex items-center gap-2">
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+            <span className="text-white font-bold text-lg">₿</span>
           </div>
-        </nav>
+          <span className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            CryptoVault
+          </span>
+        </Link>
 
-
-
-
-
-    </div>
+        <div className="flex items-center gap-6">
+          <a href="#features" className="text-foreground/80 hover:text-foreground transition-colors">
+            Features
+          </a>
+          <Link
+            href="/dashboard"
+            className="px-6 py-2 rounded-lg bg-gradient-to-r from-primary to-accent text-white font-semibold hover:shadow-lg transition-all duration-300"
+          >
+            Launch App
+          </Link>
+        </div>
+      </div>
+    </nav>
   )
 }
 
