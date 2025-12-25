@@ -1,14 +1,16 @@
 // import { Link } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, TrendingUp, Shield, Zap, BarChart3 } from "lucide-react"
 
+import Link from 'next/link'
+import { ArrowRight, TrendingUp, Shield, Zap, BarChart3 } from "lucide-react"
+import Navbar from "@/component/navbar";
 
 export default function Home() {
   return (
     <div className="flex items-center justify-center min-h-screen py-2">
+      <Navbar/>
       <div className="flex flex-col justify-center items-center text-center ">
-        <section className="max-w-4xl max-auto mt-18">
+        <section className="max-w-4xl max-auto mt-35">
 
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute w-96 h-96 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 blur-3xl -top-1 -left-20 animate-float" style={{ animationDelay: "0s" }}>
@@ -31,7 +33,7 @@ export default function Home() {
             </p>
           </div>
           <div className="relative flex flex-col sm:flex-row gap-2 justify-center max-w-auto max-w-7xl mx-auto animate-slide-in delay-200">
-            <Link href="/dashboard" className="w-50 px-8 py-4 rounded-lg bg-gradient-to-r from-primary to-accent text-white font-semibold hover:scale-105  transition-all duration-300">
+            <Link href="/auth/register" className="w-50 px-8 py-4 rounded-lg bg-gradient-to-r from-primary to-accent text-white font-semibold hover:scale-105  transition-all duration-300">
               Get Started
               <ArrowRight className="inline-block ml-2" />
             </Link >
@@ -58,14 +60,14 @@ export default function Home() {
 
         </section>
 
-        <section id="features" className="max-w-4xl mx-auto mt-32 mb-16">
+        <section id="features" className="w-full mx-auto mt-32 mb-16">
           <h1 className="text-5xl font-bold mb-8">Powerful Features
           </h1>
 
           <p className="text-lg sm:text-ml mb-8 leading-relaxed text-gray-400">
             Explore the cutting-edge features that make our platform the ultimate <br /> tool for cryptocurrency traders.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full ml-30 p-4 rounded-lg">
             {
               [
                 {
@@ -91,10 +93,10 @@ export default function Home() {
               ].map((feature,idx) => (
                 <div
                   key={idx}
-                  className="rounded-lg p-6 border border-border/50 transition-all duration-300 hover:border-primary/50 hover:translate-y-[-2px] group bg-card/50 backdrop-blur-sm animate-slide-in"
+                  className="w-120 mr-20 rounded-lg p-6 border border-border/50 transition-all duration-300 hover:border-primary/50 hover:translate-y-[-2px] group bg-card/50 backdrop-blur-sm animate-slide-in"
                   style={{ animationDelay: `${idx * 0.1}s` }}
                 >
-                  <div className="flex items-start gap-4">
+                  <div className="flex items-start gap-2 ml-10">
                     <div className="p-3 rounded-lg bg-gradient-to-br from-primary/20 to-accent/20 group-hover:from-primary/30 group-hover:to-accent/30 transition-all">
                       {feature.icon}
                     </div>

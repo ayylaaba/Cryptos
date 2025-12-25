@@ -21,7 +21,7 @@ const Navbar = () => {
             Features
           </a>
           <Link
-            href="/dashboard"
+            href="/auth/register"
             className="px-6 py-2 rounded-lg bg-gradient-to-r from-primary to-accent text-white font-semibold hover:shadow-lg transition-all duration-300"
           >
             Launch App
