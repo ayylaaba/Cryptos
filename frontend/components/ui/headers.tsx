@@ -1,4 +1,6 @@
-import React from 'react'
+
+import React, { useState, useEffect } from 'react'
+import { useTheme } from "next-themes"
 import Link from 'next/link'
 import { User, Moon, Sun } from "lucide-react";
 import {
@@ -11,56 +13,94 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-const headers = () => {
+
+const Headers = () => {
+    const { theme, setTheme } = useTheme()
+    
+    const toggleDarkMode = () => {
+        setTheme(theme === 'dark' ? 'light' : 'dark')
+    }
+
     return (
-        <header className='fixed top-0 w-full border-b border-border/30 z-50 backdrop-blur-md bg-background/70'>
-            <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between'>
+        <header className='fixed top-0 w-full h-20 border-b border-gray-200 dark:border-gray-800 z-50 backdrop-blur-md bg-white/80 dark:bg-gray-900/80 shadow-md'>
+            <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between'>
                 <div className='flex items-center gap-2'>
-                    <div className='w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center'>
+                    <div className='w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center'>
                         <span className='text-white font-bold text-lg'>₿</span>
                     </div>
-                    <span className='text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent'>
+                    <span className='text-xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent'>
                         CryptoVault
                     </span>
                 </div>
 
-                {/* make a dashboard header */}
-                <div className='flex items-center gap-15'>
-                    <Link href={'/dashboard'} className='text-foreground/80 hover:text-foreground transition-colors'>
+                {/* Navigation Links */}
+                <div className='flex items-center gap-8'>
+                    <Link 
+                        href={'/dashboard'} 
+                        className='text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors font-medium'
+                    >
                         Dashboard
                     </Link>
-                    <Link href={'/markets'} className='text-foreground/80 hover:text-foreground transition-colors'>
+                    <Link 
+                        href={'/markets'} 
+                        className='text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors font-medium'
+                    >
                         Markets
                     </Link>
-                    <Link href={'/news'} className='text-foreground/80 hover:text-foreground transition-colors'>
+                    <Link 
+                        href={'/news'} 
+                        className='text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors font-medium'
+                    >
                         News
                     </Link>
                 </div>
-                {/* make a meanu button show profile and settings and logout */}
 
-                <div className='flex items-center'>
+                {/* Right side buttons */}
+                <div className='flex items-center gap-4'>
+                    {/* SIMPLE DARK MODE TOGGLE */}
                     <button
-                        className="mr-4 p-2 rounded-lg hover:bg-indigo-700 transition-colors">
-                        <Sun size={20} />
+                        onClick={toggleDarkMode}
+                        className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                        aria-label="Toggle dark mode"
+                    >
+                        {theme !== 'dark' ? (
+                            <Sun size={20} className='text-yellow-500' />
+                        ) : (
+                            <Moon size={20} className='text-gray-600' />
+                        )}
                     </button>
+                    
+                    {/* User Menu */}
                     <DropdownMenu>
-                        <DropdownMenuTrigger className="w-10 h-10 flex items-center justify-center cursor-pointer">
-                            <button className="w-8 h-8 cursor-pointer rounded-full bg-gradient-to-br from-primary border-0 to-accent flex items-center justify-center">
-                                <User size={16} />
+                        <DropdownMenuTrigger asChild>
+                            <button className="w-8 h-8 cursor-pointer rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center hover:opacity-90 transition-opacity">
+                                <User size={16} className="text-white" />
                             </button>                    
                         </DropdownMenuTrigger>
-                        <DropdownMenuContent className="w-56 bg-background border border-border/30 shadow-lg">
-                            <DropdownMenuLabel className="font-semibold text-foreground/80">User Menu</DropdownMenuLabel>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuGroup >
-                                <DropdownMenuItem className="text-white hover:!bg-indigo-800">
-                                    Profile
+                        <DropdownMenuContent 
+                            className="w-56 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg"
+                            align="end"
+                        >
+                            <DropdownMenuLabel className="font-semibold text-gray-900 dark:text-gray-100">
+                                User Menu
+                            </DropdownMenuLabel>
+                            <DropdownMenuSeparator className="bg-gray-200 dark:bg-gray-700" />
+                            <DropdownMenuGroup>
+                                <DropdownMenuItem asChild className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
+                                    <Link href={'profile'}>
+                                        Profile
+                                    </Link>
                                 </DropdownMenuItem>
-                                <DropdownMenuItem className="text-white hover:!bg-indigo-800">
-                                    Settings
+                                <DropdownMenuItem asChild className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
+                                   <Link href={'settings'}>
+                                        Settings
+                                   </Link>
                                 </DropdownMenuItem>
-                                <DropdownMenuItem className="text-white hover:!bg-indigo-800">
-                                    Logout
+                                <DropdownMenuSeparator className="bg-gray-200 dark:bg-gray-700" />
+                                <DropdownMenuItem asChild  className="text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 cursor-pointer">
+                                    <Link href={'/auth/logout'}>
+                                        Logout
+                                    </Link> 
                                 </DropdownMenuItem>
                             </DropdownMenuGroup>
                         </DropdownMenuContent>
@@ -71,4 +111,4 @@ const headers = () => {
     )
 }
 
-export default headers
+export default Headers
