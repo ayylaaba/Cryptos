@@ -176,10 +176,6 @@ const Logout = () => {
                     </li>
                     <li className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
-                      All authentication tokens will be revoked
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
                       You'll need to sign in again to access your account
                     </li>
                     <li className="flex items-center gap-2">
@@ -199,15 +195,7 @@ const Logout = () => {
                   <ul className="space-y-2 text-gray-600 dark:text-gray-400">
                     <li className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div>
-                      Save any unsaved changes in your trades
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div>
                       Ensure you have access to your login credentials
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div>
-                      Close any active trading positions if necessary
                     </li>
                   </ul>
                 </div>
@@ -235,7 +223,7 @@ const Logout = () => {
 
           {/* Security Stats */}
           <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
               <div className="text-center">
                 <p className="text-gray-500 dark:text-gray-400 text-sm">Active Sessions</p>
                 <p className="text-2xl font-bold text-gray-900 dark:text-white mt-2">2</p>
@@ -243,10 +231,6 @@ const Logout = () => {
               <div className="text-center">
                 <p className="text-gray-500 dark:text-gray-400 text-sm">Last Login</p>
                 <p className="text-2xl font-bold text-gray-900 dark:text-white mt-2">2h ago</p>
-              </div>
-              <div className="text-center">
-                <p className="text-gray-500 dark:text-gray-400 text-sm">IP Address</p>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white mt-2">***.***.***</p>
               </div>
               <div className="text-center">
                 <p className="text-gray-500 dark:text-gray-400 text-sm">Account Age</p>
