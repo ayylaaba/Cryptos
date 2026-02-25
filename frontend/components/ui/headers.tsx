@@ -52,11 +52,15 @@ const Headers = () => {
                     >
                         News
                     </Link>
+                    <Link 
+                        href={'/watchlist'} 
+                        className='underlineCss text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors font-medium'
+                    >
+                        Watchlist
+                    </Link>
                 </div>
 
-                {/* Right side buttons */}
                 <div className='flex items-center gap-4'>
-                    {/* SIMPLE DARK MODE TOGGLE */}
                     <button
                         onClick={toggleDarkMode}
                         className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
@@ -69,8 +73,7 @@ const Headers = () => {
                         )}
                     </button>
                     
-                    {/* User Menu */}
-                    <DropdownMenu>
+                    {/* <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <button className="w-8 h-8 cursor-pointer rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center hover:opacity-90 transition-opacity">
                                 <User size={16} className="text-white" />
@@ -103,7 +106,7 @@ const Headers = () => {
                                 </DropdownMenuItem>
                             </DropdownMenuGroup>
                         </DropdownMenuContent>
-                    </DropdownMenu>
+                    </DropdownMenu> */}
                 </div>
             </div>
         </header>

@@ -525,25 +525,13 @@ const News = () => {
 
     // ============ LOADING STATE ============
 
-
-    if (isLoading) return (
+      if (isLoading) return (
         <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-950 flex items-center justify-center">
           <div className="text-center">
+            {/* Simple spinner - NO floating coins */}
             <div className="relative w-32 h-32 mx-auto mb-8">
-              <div className="absolute inset-0">
-                {[...Array(6)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="absolute w-4 h-4 bg-indigo-500 rounded-full floating-coin"
-                    style={{
-                      left: `${Math.cos((i * 60) * Math.PI / 180) * 40 + 50}%`,
-                      top: `${Math.sin((i * 60) * Math.PI / 180) * 40 + 50}%`,
-                    }}
-                  />
-                ))}
-              </div>
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-12 h-12 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin"></div>
+                <div className="w-16 h-16 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin"></div>
               </div>
             </div>
             <p className="text-gray-600 dark:text-gray-300 font-medium text-lg animate-pulse">
@@ -552,6 +540,7 @@ const News = () => {
           </div>
         </div>
       )
+
 
     // ============ ERROR STATE ============
 
